@@ -16,6 +16,9 @@
 			<a href="/contact">Contact</a>
 		</div>
 		<div class="flex-0 px-2 py-1 hover:bg-slate-300 {faqSelected ? selectedStyle : ''}">
+			<a href="/projects">Projects</a>
+		</div>
+		<div class="flex-0 px-2 py-1 hover:bg-slate-300 {faqSelected ? selectedStyle : ''}">
 			<a href="/faq">FAQ</a>
 		</div>
 		<div class="flex-grow" />
