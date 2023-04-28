@@ -6,7 +6,7 @@ function validateEmail(email: string | null): RegExpMatchArray | null {
 	return String(email)
 		.toLowerCase()
 		.match(
-			/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+			/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
 		);
 }
 
@@ -15,7 +15,7 @@ function fieldValueNull(value: any): boolean {
 }
 
 function validateForm(data: { [key: string]: string }): { [key: string]: string } {
-	let errors: { [key: string]: string } = {};
+	const errors: { [key: string]: string } = {};
 
 	if (fieldValueNull(data['email'])) {
 		errors['email'] = 'Please enter an email address';
@@ -37,26 +37,26 @@ function validateForm(data: { [key: string]: string }): { [key: string]: string 
 export const actions = {
 	default: async (event) => {
 		const formData = await event.request.formData();
-		let data: { [key: string]: string } = {};
-		for (let field of formData) {
+		const data: { [key: string]: string } = {};
+		for (const field of formData) {
 			const [key, value] = field;
 			data[key] = value.toString();
 		}
 
-		let errors = validateForm(data);
+		const errors = validateForm(data);
 
 		if (Object.keys(errors).length > 0) {
 			return { success: false, errors: errors, data: data };
 		}
 
-		let transporter = nodemailer.createTransport({
+		const transporter = nodemailer.createTransport({
 			host: 'mail.fdunlap.com',
 			port: 465,
 			secure: true,
 			auth: { user: 'contact@fdunlap.com', pass: 'nu5XgPZ5Nd5Zzee' }
 		});
 
-		let info = await transporter.sendMail({
+		const info = await transporter.sendMail({
 			from: `"AutoContactEmailer" <contact@fdunlap.com>`,
 			to: MY_EMAIL + ', forrest@fdunlap.com',
 			subject: '[CONTACT EMAIL]: ' + data['subject'],

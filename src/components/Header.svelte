@@ -3,6 +3,7 @@
 	$: homeSelected = $page.route.id?.substring(1) == '';
 	$: faqSelected = $page.route.id?.substring(1) == 'faq';
 	$: contactSelected = $page.route.id?.substring(1) == 'contact';
+	$: projectsSelected = $page.route.id?.substring(1) == 'projects';
 
 	const selectedStyle = 'font-bold';
 </script>
@@ -15,7 +16,7 @@
 		<div class="flex-0 px-2 py-1 hover:bg-slate-300 {contactSelected ? selectedStyle : ''}">
 			<a href="/contact">Contact</a>
 		</div>
-		<div class="flex-0 px-2 py-1 hover:bg-slate-300 {faqSelected ? selectedStyle : ''}">
+		<div class="flex-0 px-2 py-1 hover:bg-slate-300 {projectsSelected ? selectedStyle : ''}">
 			<a href="/projects">Projects</a>
 		</div>
 		<div class="flex-0 px-2 py-1 hover:bg-slate-300 {faqSelected ? selectedStyle : ''}">
