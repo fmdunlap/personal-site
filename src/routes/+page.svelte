@@ -10,7 +10,7 @@
 	// form = { success: true };
 </script>
 
-<div class="mx-auto flex w-2/3 flex-col gap-y-8 md:w-3/5">
+<div class="mx-4 flex flex-col gap-y-8 md:mx-auto md:w-10/12 lg:w-4/5 xl:w-3/5">
 	<Card direction="col" switchPoint="lg">
 		<img
 			class="h-fit w-fit self-center rounded-full border-2 border-gray-200 object-cover hover:shadow-md"
@@ -55,7 +55,7 @@
 	<Card direction="col" gap={form?.success ? 'gap-6' : 'gap-12'}>
 		<p class="flex-grow text-center text-2xl font-bold xl:text-3xl">Get in touch.</p>
 		{#if !form?.success}
-			<ContactForm errors={form?.errors} data={form?.data} />
+			<ContactForm action="?/contact" errors={form?.errors} data={form?.data} />
 		{:else}
 			<Card background="bg-green-400" padding="p-24">
 				<p class="mx-auto text-xl">Successfully Sent Message!</p>

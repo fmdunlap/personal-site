@@ -1,11 +1,13 @@
 <script lang="ts">
 	export let errors: { [key: string]: string } | undefined;
 	export let data: { [key: string]: string } | undefined;
+
+	export let action: string;
 </script>
 
 <form
 	method="POST"
-	action="?/contact"
+	{action}
 	class="mx-auto flex w-full flex-col rounded-md border border-slate-400 px-6 py-2 md:gap-y-1.5"
 >
 	{#if errors?.email}
