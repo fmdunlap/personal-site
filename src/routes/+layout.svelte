@@ -1,23 +1,14 @@
 <script>
 	import '../app.css';
 	import Footer from '../components/Footer.svelte';
-	import Header from '../components/Header.svelte';
+	import HeaderLogo from '../components/HeaderLogo.svelte';
 </script>
 
-<div class="flex min-h-screen flex-col bg-zinc-300">
-	<div
-		class="flex-0 mb-4 mt-2 h-auto w-44 select-none self-center hover:cursor-default hover:fill-gray-500"
-	>
-		<svg viewBox="0 0 110 30" xmlns="http://www.w3.org/2000/svg">
-			<style>
-				.heavy {
-					font: bold 20px monospace;
-				}
-			</style>
-			<text x="0" y="20" class="heavy">&lt; FDIV /&gt;</text>
-		</svg>
+<div class="flex min-h-screen w-full flex-col bg-zinc-300">
+	<HeaderLogo />
+	<div class="mx-4 flex flex-col gap-y-8 md:mx-auto md:w-10/12 lg:w-4/5 xl:mt-8 xl:w-9/12">
+		<slot />
 	</div>
-	<slot />
 	<div class="flex-grow" />
 	<Footer />
 </div>

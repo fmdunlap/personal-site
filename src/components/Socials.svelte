@@ -10,7 +10,7 @@
 	];
 </script>
 
-<div class="mt-2 flex flex-row items-center gap-x-6">
+<div class="z-10 mt-2 flex flex-row items-center gap-x-6">
 	{#each socials as { background, link, dim }}
 		<a href={link}>
 			<div class="{dim} {background} bg-cover bg-no-repeat drop-shadow-md hover:drop-shadow-xl" />
