@@ -6,6 +6,8 @@
 	import type { ActionData } from './$types';
 
 	export let form: ActionData;
+
+	// form = { success: true };
 </script>
 
 <div class="mx-auto flex w-2/3 flex-col gap-y-8 md:w-3/5">
@@ -64,4 +66,7 @@
 			<Socials />
 		</div>
 	</Card>
+	<form class="mx-auto self-center" method="POST" action="?/test">
+		<button type="submit" class="text-bold bg-red-700 p-10 text-white">TEST</button>
+	</form>
 </div>

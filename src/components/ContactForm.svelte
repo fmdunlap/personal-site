@@ -5,6 +5,7 @@
 
 <form
 	method="POST"
+	action="?/contact"
 	class="mx-auto flex w-full flex-col rounded-md border border-slate-400 px-6 py-2 md:gap-y-1.5"
 >
 	{#if errors?.email}

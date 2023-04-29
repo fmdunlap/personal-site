@@ -1,41 +1,42 @@
 import nodemailer from 'nodemailer';
+import EmailValidator from 'email-validator';
+import Capitalize from 'capitalize';
+
+type ValidationResult = { success: false; error: string } | { success: true };
+type Validator = (value: string) => ValidationResult;
 
 const MY_EMAIL = 'forrestmdunlap@gmail.com';
+const SMTP_TRANSPORT = nodemailer.createTransport({
+	host: 'mail.fdunlap.com',
+	port: 465,
+	secure: true,
+	auth: { user: 'contact@fdunlap.com', pass: 'nu5XgPZ5Nd5Zzee' }
+});
 
-function validateEmail(email: string | null): RegExpMatchArray | null {
-	return String(email)
-		.toLowerCase()
-		.match(
-			/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
-		);
+function validateField(field: string, value: string): ValidationResult {
+	if (value == null || value == undefined || value == '' || value.trim() == '') {
+		return { success: false, error: `${Capitalize(field)} is required.` };
+	}
+	if (validators[field]) {
+		return validators[field](value);
+	}
+	return validators['default'](value);
 }
 
-function fieldValueNull(value: any): boolean {
-	return value == null || value == undefined || value == '';
-}
-
-function validateForm(data: { [key: string]: string }): { [key: string]: string } {
-	const errors: { [key: string]: string } = {};
-
-	if (fieldValueNull(data['email'])) {
-		errors['email'] = 'Please enter an email address';
+const validators: { [key: string]: Validator } = {
+	email: (value: string) => {
+		if (!EmailValidator.validate(value)) {
+			return { success: false, error: 'Invalid email address.' };
+		}
+		return { success: true };
+	},
+	default: () => {
+		return { success: true };
 	}
-	if (fieldValueNull(data['subject'])) {
-		errors['subject'] = 'Please enter a subject line';
-	}
-	if (fieldValueNull(data['message'])) {
-		errors['message'] = 'Please say something?!';
-	}
-
-	if (!Object.keys(errors).includes('email') && !validateEmail(data['email'])) {
-		errors['email'] = 'Email address is invalid.';
-	}
-
-	return errors;
-}
+};
 
 export const actions = {
-	default: async (event) => {
+	contact: async (event) => {
 		const formData = await event.request.formData();
 		const data: { [key: string]: string } = {};
 		for (const field of formData) {
@@ -43,27 +44,24 @@ export const actions = {
 			data[key] = value.toString();
 		}
 
-		const errors = validateForm(data);
+		const errors = {};
+		Object.keys(data).forEach((key) => {
+			const validationResult = validateField(key, data[key]);
+			if (!validationResult.success) {
+				Object.assign(errors, { [key]: validationResult.error });
+			}
+		});
 
 		if (Object.keys(errors).length > 0) {
 			return { success: false, errors: errors, data: data };
 		}
 
-		const transporter = nodemailer.createTransport({
-			host: 'mail.fdunlap.com',
-			port: 465,
-			secure: true,
-			auth: { user: 'contact@fdunlap.com', pass: 'nu5XgPZ5Nd5Zzee' }
-		});
-
-		const info = await transporter.sendMail({
+		await SMTP_TRANSPORT.sendMail({
 			from: `"AutoContactEmailer" <contact@fdunlap.com>`,
 			to: MY_EMAIL + ', forrest@fdunlap.com',
 			subject: '[CONTACT EMAIL]: ' + data['subject'],
 			text: 'FROM: ' + data['email'] + '\n\n' + 'CONTENT: \n\n' + data['message']
 		});
-
-		console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
 		return { success: true };
 	}
