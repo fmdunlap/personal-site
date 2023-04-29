@@ -18,7 +18,7 @@
 	>
 		{#each videos as video}
 			<a class="group relative h-full w-fit" href="https://www.youtube.com/watch?v={video.id}">
-				<img src={video.thumbnail} />
+				<img src={video.thumbnail} alt="Video thumbnail for {video.title}" />
 				<div class="absolute top-0 h-1/3 w-full bg-gradient-to-b from-slate-800" />
 				<p class="absolute left-2 top-1 font-bold text-white group-hover:text-slate-300">
 					{video.title}
