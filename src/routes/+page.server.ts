@@ -119,7 +119,7 @@ const youtube = google.youtube({
 });
 
 export async function load() {
-	if (DRY_RUN) {
+	if (DRY_RUN == 'TRUE') {
 		console.log('DRY RUN');
 		return dry_run_videos;
 	}
