@@ -1,0 +1,1 @@
+import{H as r}from"./control.e7f5239e.js";function t(o,e){return new r(o,e)}new TextEncoder;function l({params:o}){if(o.slug==="hello-world")return{title:"Hello world!",content:"Welcome to our blog. Lorem ipsum dolor sit amet..."};throw t(404,"Not found")}const u=Object.freeze(Object.defineProperty({__proto__:null,load:l},Symbol.toStringTag,{value:"Module"}));export{u as _,l};
