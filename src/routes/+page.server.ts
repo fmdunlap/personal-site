@@ -1,16 +1,17 @@
 import nodemailer from 'nodemailer';
 import EmailValidator from 'email-validator';
 import Capitalize from 'capitalize';
+import { SMTP_EMAIL, SMTP_HOST, SMTP_PASSWORD } from '$env/static/private';
 
 type ValidationResult = { success: false; error: string } | { success: true };
 type Validator = (value: string) => ValidationResult;
 
 const MY_EMAIL = 'forrestmdunlap@gmail.com';
 const SMTP_TRANSPORT = nodemailer.createTransport({
-	host: 'mail.fdunlap.com',
+	host: SMTP_HOST,
 	port: 465,
 	secure: true,
-	auth: { user: 'contact@fdunlap.com', pass: 'nu5XgPZ5Nd5Zzee' }
+	auth: { user: SMTP_EMAIL, pass: SMTP_PASSWORD }
 });
 
 function validateField(field: string, value: string): ValidationResult {
