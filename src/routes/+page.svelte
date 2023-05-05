@@ -11,7 +11,7 @@
 	export let data: PageData;
 </script>
 
-<Card direction="col" switchPoint="lg">
+<Card direction="col" switchPoint="lg" extras="xl:mt-8">
 	<img
 		class="h-fit w-fit self-center rounded-full border-2 border-gray-200 object-cover hover:shadow-md"
 		src={Profile}
@@ -42,13 +42,8 @@
 <hr class="mx-20 border border-gray-400" />
 
 <div class="flex flex-col gap-8 xl:flex-row">
-	{#if data.gallery.videos != undefined && data.gallery.videos.length > 0}
-		<VideoGallery videos={data.gallery.videos} />
-	{:else}
-		<p>Found no videos!</p>
-	{/if}
+	<VideoGallery videos={data.gallery.videos} />
 	<div class="hidden">
-		<hr class="mx-20 border border-gray-400 xl:hidden" />
 		<EssayLinks />
 	</div>
 </div>
