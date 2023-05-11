@@ -15,9 +15,12 @@
 	import MonsterTeaching from './monster_teaching.png';
 	import MonsterAngry from './monster_angry.png';
 	import MonsterStaring from './monster_staring.png';
+	import BarChartOne from './bar_chart_one.png';
+	import BarChartTwo from './bar_chart_two.png';
+	import BarChartThree from './bar_chart_three.png';
 
 	$: matches = false;
-	$: checkboxChecked = true;
+	$: checkboxChecked = false;
 </script>
 
 <EssayCard>
@@ -185,21 +188,36 @@
 				the project and have already started researching, sketching, coding, or whatever your Big
 				Creative Project requires.
 			</p>
-			<EssayImage src="http://placekitten.com/g/300/200" alt="a cat" caption="Bar Chart #1" />
+			<EssayImage
+				src={BarChartOne}
+				alt="A bar chart showing on the 'friction' bar on the left, and the 'fuel' bar on the right. The fuel bar is slightly larger than the friction bar."
+				caption="The wonderful beginnings of a project - where everything is green, beautiful, and blissfull."
+				extras="h-max sm:h-96"
+			/>
 			<p>
 				Things are pretty effortless in the beginning. You’re probably doing the activity you enjoy
 				most regarding your Big Creative Project. That means you’ve got a ton of “curiosity and
 				interest” fuel to push you forward, and since you’re working on the stuff you enjoy working
 				on, you’ve got very little friction.
 			</p>
-			<EssayImage src="http://placekitten.com/g/300/200" alt="a cat" caption="Bar Chart #2" />
+			<EssayImage
+				src={BarChartTwo}
+				alt="The bar chart again, but in this chart the anxiety monster is adding insecurities to the friction bar to make it larger than the fuel bar."
+				caption="Sometimes the monster adds friction in our way when it doesn't think we'll be able to accomplish our goal."
+				extras="h-max sm:h-96"
+			/>
 			<p>
 				As the Big Creative Project progresses, other tasks require your attention. Unfortunately,
 				these tasks aren’t as fun, and maybe you’re not as secure in your abilities with these
 				different tasks. As a result, friction creeps up, making it harder for you to move the
 				project forward.
 			</p>
-			<EssayImage src="http://placekitten.com/g/300/200" alt="a cat" caption="Bar Chart #3" />
+			<EssayImage
+				src={BarChartThree}
+				alt="The bar chart again, but in the chart the anxiety monster has added anxiety, shame, and ambition to the fuel bar to make it larger than the friction bar"
+				caption="This is like. Totally sustainable. Definitely."
+				extras="h-max sm:h-96"
+			/>
 			<p>
 				This is it! This is where The Monster comes in! The Monster is good at playing mind games<Footnote
 					number={3}
@@ -217,7 +235,7 @@
 				we don’t have to do the work in the first place. We get to carry on with our lives (and
 				egos) intact, even if the course of action would have resulted in failure.
 			</p>
-			<p class="font-bold">MORE INFORMATION ABOUT "FAKE FRICTION"/"INSECURE FRICTION" HERE.</p>
+			<!-- <p class="font-bold">MORE INFORMATION ABOUT "FAKE FRICTION"/"INSECURE FRICTION" HERE.</p> -->
 			<p>A big downside, though - burning that extra-special fuel makes us feel downright awful.</p>
 			<MediaQuery query="(max-width: 480px)" bind:matches>
 				{#if matches}
@@ -245,7 +263,11 @@
 				monster.
 			</p>
 			<p class="font-bold italic">We can stare at The Monster.</p>
-			<EssayImage src={MonsterStaring} alt="A stick figure staring at the anxiety monster." extras="h-max sm:h-56"/>
+			<EssayImage
+				src={MonsterStaring}
+				alt="A stick figure staring at the anxiety monster."
+				extras="h-max sm:h-56"
+			/>
 			<p>
 				Not literally, of course. There’s no actual monster to stare at. However, we can improve our
 				awareness of when and how the monster messes with our fuel sources.
@@ -290,87 +312,80 @@
 					</span> This will only take a few minutes - pinky promise.
 				</p>
 			</div>
-			<div class="mx-auto my-6 text-lg">
-				<input type="checkbox" class="mr-2" bind:checked={checkboxChecked} /> ← Click the checkbox to
-				say you’ve done the thing.
-			</div>
-			{#if checkboxChecked}
-				<p>If you’re still here - hooray!</p>
-				<p>
-					Assuming you did the exercise while focusing on your struggle-project, your monster might
-					be actively throwing a fit.
-				</p>
-				<EssayImage src={MonsterAngry} alt="a cat" extras="h-max sm:h-56" />
-				<p>
-					Ask yourself - is The Monster adding extra-special (dirty) fuel to your engine so you’ll
-					work harder? Or is it making the project seem impossible and providing excuses so you
-					don’t feel bad about not working on your struggle-project?
-				</p>
-				<EssayList numbered>
-					<EssayLi>
-						<span class="font-bold">Extra-Special Fuel: </span>Are you having anxious thoughts or
-						feelings of ambition, making it easier to push through difficulty? Do any of the
-						following thoughts resonate with you?
-						<EssayList>
-							<EssayLi>
-								“I have to do my struggle-project, or else bad things will happen! Danger!”
-							</EssayLi>
-							<EssayLi>“If I want to be successful, I must do my struggle-project”</EssayLi>
-							<EssayLi>
-								“What kind of a person would I be if I didn’t do my struggle-project?!”
-							</EssayLi>
-						</EssayList>
-					</EssayLi>
-					<EssayLi>
-						<span class="font-bold">Fake Friction: </span>Is The Monster making your
-						struggle-project seem impossible? Or maybe it’s making your struggle-project seem
-						trivial and not worth the effort? These feelings usually manifest as tiredness or
-						boredom with your project.
-					</EssayLi>
-				</EssayList>
-				<p>
-					Sit with the feeling for a moment. Don’t try to change, run from, or otherwise suppress
-					it. Just observe it. <Footnote number={5}>
-						For brownie points, use the paper (or decommissioned 737 MAX) from earlier to write down
-						what you’re feeling. Next time you’re working on your project, review what you wrote and
-						reflect on it.
-					</Footnote> After a while, the feeling should diminish a bit. <Footnote number={6}>
-						Maybe do some <a
-							href="https://images.squarespace-cdn.com/content/v1/5b8645f7266c07b084eb29c7/1570208020992-TRZCAX5P0A53CG0LS5AO/Box+breathing.gif?format=1000w"
-							class="text-blue-700 underline"
-						>
-							box breathing
-						</a> while you’re here.
-					</Footnote>
-				</p>
-				<EssayHr />
-				<p>
-					When you’re ready, review what you wrote earlier. As you read, notice which parts make The
-					Monster return to the surface. Why?
-				</p>
-				<p>
-					Try to understand the insecurity that The Monster is protecting you from. This will be
-					difficult at first, but it gets easier with time. Sometimes all you have to do is flip the
-					feeling on its head; if you’re anxious, ask yourself what you’re anxious about. If you’re
-					tired, ask yourself why. <Footnote number={7}>
-						Tiredness is an emotion and a physical thing! It’s both! The monster takes advantage of
-						tiredness by making you feel like your struggle-project isn’t worth doing & won’t be
-						worth the effort.
-					</Footnote>
-				</p>
-				<p>
-					The funny thing about our insecurities is that they lose their power once we know what
-					they are. Right now, I’m afraid to publish this article because I mistakenly derive my own
-					value from the value of what I produce. Ergo, I have no value if no one finds any value in
-					this article. Simply knowing that and being able to observe my own insecurity takes its
-					power away.
-				</p>
-				<p>
-					Next time you work on one of your struggle-projects, notice when The Monster gets
-					involved. Ask why it’s making you feel that way. Consider journaling about it. Then decide
-					what to do next without letting The Monster take over.
-				</p>
-			{/if}
+			<EssayHr />
+			<p>If you’re still here - hooray!</p>
+			<p>
+				Assuming you did the exercise while focusing on your struggle-project, your monster might be
+				actively throwing a fit.
+			</p>
+			<EssayImage src={MonsterAngry} alt="a cat" extras="h-max sm:h-56" />
+			<p>
+				Ask yourself - is The Monster adding extra-special (dirty) fuel to your engine so you’ll
+				work harder? Or is it making the project seem impossible and providing excuses so you don’t
+				feel bad about not working on your struggle-project?
+			</p>
+			<EssayList numbered>
+				<EssayLi>
+					<span class="font-bold">Extra-Special Fuel: </span>Are you having anxious thoughts or
+					feelings of ambition, making it easier to push through difficulty? Do any of the following
+					thoughts resonate with you?
+					<EssayList>
+						<EssayLi>
+							“I have to do my struggle-project, or else bad things will happen! Danger!”
+						</EssayLi>
+						<EssayLi>“If I want to be successful, I must do my struggle-project”</EssayLi>
+						<EssayLi>
+							“What kind of a person would I be if I didn’t do my struggle-project?!”
+						</EssayLi>
+					</EssayList>
+				</EssayLi>
+				<EssayLi>
+					<span class="font-bold">Fake Friction: </span>Is The Monster making your struggle-project
+					seem impossible? Or maybe it’s making your struggle-project seem trivial and not worth the
+					effort? These feelings usually manifest as tiredness or boredom with your project.
+				</EssayLi>
+			</EssayList>
+			<p>
+				Sit with the feeling for a moment. Don’t try to change, run from, or otherwise suppress it.
+				Just observe it. <Footnote number={5}>
+					For brownie points, use the paper (or decommissioned 737 MAX) from earlier to write down
+					what you’re feeling. Next time you’re working on your project, review what you wrote and
+					reflect on it.
+				</Footnote> After a while, the feeling should diminish a bit. <Footnote number={6}>
+					Maybe do some <a
+						href="https://images.squarespace-cdn.com/content/v1/5b8645f7266c07b084eb29c7/1570208020992-TRZCAX5P0A53CG0LS5AO/Box+breathing.gif?format=1000w"
+						class="text-blue-700 underline"
+					>
+						box breathing
+					</a> while you’re here.
+				</Footnote>
+			</p>
+			<p>
+				When you’re ready, review what you wrote earlier. As you read, notice which parts make The
+				Monster return to the surface. Why?
+			</p>
+			<p>
+				Try to understand the insecurity that The Monster is protecting you from. This will be
+				difficult at first, but it gets easier with time. Sometimes all you have to do is flip the
+				feeling on its head; if you’re anxious, ask yourself what you’re anxious about. If you’re
+				tired, ask yourself why. <Footnote number={7}>
+					Tiredness is an emotion and a physical thing! It’s both! The monster takes advantage of
+					tiredness by making you feel like your struggle-project isn’t worth doing & won’t be worth
+					the effort.
+				</Footnote>
+			</p>
+			<p>
+				The funny thing about our insecurities is that they lose their power once we know what they
+				are. Right now, I’m afraid to publish this article because I mistakenly derive my own value
+				from the value of what I produce. Ergo, I have no value if no one finds any value in this
+				article. Simply knowing that and being able to observe my own insecurity takes its power
+				away.
+			</p>
+			<p>
+				Next time you work on one of your struggle-projects, notice when The Monster gets involved.
+				Ask why it’s making you feel that way. Consider journaling about it. Then decide what to do
+				next without letting The Monster take over.
+			</p>
 		</div>
 	</span>
 </EssayCard>
