@@ -43,9 +43,9 @@
 
 <div class="flex flex-col gap-8 xl:flex-row">
 	<VideoGallery videos={data.gallery.videos} />
-	<div class="hidden">
-		<EssayLinks />
-	</div>
+	<!-- <div class="hidden"> -->
+	<EssayLinks />
+	<!-- </div> -->
 </div>
 
 <hr class="mx-20 border border-gray-400" />
@@ -59,7 +59,7 @@
 			<p class="mx-auto text-xl">Successfully Sent Message!</p>
 		</Card>
 	{/if}
-	<div class="flex flex-col items-center rounded-md px-10 py-2">
+	<div class="hidden flex-col items-center rounded-md px-10 py-2">
 		<p class="text-md font-bold md:text-xl">Or you can always DM me 😄</p>
 		<Socials />
 	</div>
