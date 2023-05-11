@@ -191,7 +191,7 @@
 			<EssayImage
 				src={BarChartOne}
 				alt="A bar chart showing on the 'friction' bar on the left, and the 'fuel' bar on the right. The fuel bar is slightly larger than the friction bar."
-				caption="The wonderful beginnings of a project - where everything is green, beautiful, and blissfull."
+				caption="The wonderful beginnings of a project - where everything is green, beautiful, and blissful."
 				extras="h-max sm:h-96"
 			/>
 			<p>
