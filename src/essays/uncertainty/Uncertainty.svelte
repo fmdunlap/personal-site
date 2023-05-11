@@ -224,6 +224,7 @@
 					>In fact, it’s just as good at playing mind games as you are because - fun fact - <a
 						href="https://www.youtube.com/watch?v=b1kbLwvqugk"
 						class="text-blue-700 underline"
+						target="_blank"
 					>
 						you’re the monster. It’s you.</a
 					>
@@ -355,6 +356,7 @@
 					Maybe do some <a
 						href="https://images.squarespace-cdn.com/content/v1/5b8645f7266c07b084eb29c7/1570208020992-TRZCAX5P0A53CG0LS5AO/Box+breathing.gif?format=1000w"
 						class="text-blue-700 underline"
+						target="_blank"
 					>
 						box breathing
 					</a> while you’re here.
