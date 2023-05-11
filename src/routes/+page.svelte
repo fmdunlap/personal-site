@@ -43,9 +43,7 @@
 
 <div class="flex flex-col gap-8 xl:flex-row">
 	<VideoGallery videos={data.gallery.videos} />
-	<!-- <div class="hidden"> -->
 	<EssayLinks />
-	<!-- </div> -->
 </div>
 
 <hr class="mx-20 border border-gray-400" />
