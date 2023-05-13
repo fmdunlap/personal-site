@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { getEssay } from '../../../../essays/EssayManager';
+	import { getEssay } from '$lib/essay/EssayManager';
 
 	const slug = $page.params['slug'];
 </script>

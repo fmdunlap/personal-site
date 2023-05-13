@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Card from './Card.svelte';
-	import { essays } from '../../essays/EssayManager';
+	import { essays } from '$lib/essay/EssayManager';
 </script>
 
 <Card direction="col" extras="basis-1/3 xl:p-8">
