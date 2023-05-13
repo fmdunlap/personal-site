@@ -4,7 +4,7 @@
 	import EssayLinks from '$lib/components/EssayLinks.svelte';
 	import Socials from '$lib/components/Socials.svelte';
 	import VideoGallery from '$lib/components/VideoGallery.svelte';
-	import Profile from '../../images/profile_256.jpg';
+	import Profile from '$images/profile_256.jpg';
 	import type { ActionData, PageData } from './$types';
 
 	export let form: ActionData;

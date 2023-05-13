@@ -4,9 +4,9 @@ export default {
 	theme: {
 		extend: {
 			backgroundImage: {
-				twitterLogo: "url('/src/images/twitter.svg')",
-				youtubeLogo: "url('/src/images/youtube.svg')",
-				instagramLogo: "url('/src/images/instagram.svg')"
+				twitterLogo: "url('$images/twitter.svg')",
+				youtubeLogo: "url('$images/youtube.svg')",
+				instagramLogo: "url('$images/instagram.svg')"
 			}
 		}
 	},
