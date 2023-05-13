@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import { segmentize } from '../lib/UrlLib';
+	import { segmentize } from '$lib/UrlLib';
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
 	import capitalize from 'capitalize';

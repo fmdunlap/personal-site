@@ -1,6 +1,5 @@
 import type { SvelteComponent } from 'svelte';
 import Uncertainty from './uncertainty/Uncertainty.svelte';
-import TestEssay from './TestEssay.svelte';
 
 export type Essay = {
 	title: string;
