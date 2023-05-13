@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Card from '../components/Card.svelte';
-	import ContactForm from '../components/ContactForm.svelte';
-	import EssayLinks from '../components/EssayLinks.svelte';
-	import Socials from '../components/Socials.svelte';
-	import VideoGallery from '../components/VideoGallery.svelte';
-	import Profile from '../images/profile_256.jpg';
+	import Card from '../../components/Card.svelte';
+	import ContactForm from '../../components/ContactForm.svelte';
+	import EssayLinks from '../../components/EssayLinks.svelte';
+	import Socials from '../../components/Socials.svelte';
+	import VideoGallery from '../../components/VideoGallery.svelte';
+	import Profile from '../../images/profile_256.jpg';
 	import type { ActionData, PageData } from './$types';
 
 	export let form: ActionData;
