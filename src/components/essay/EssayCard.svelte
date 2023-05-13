@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Card from '$lib/components/Card.svelte';
+	import Card from '$components/Card.svelte';
 </script>
 
 <Card direction="col" wipeSizes padding="p-4" gap="gap-6">

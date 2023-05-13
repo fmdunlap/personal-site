@@ -1,16 +1,16 @@
 <script lang="ts">
-	import EssayCard from '$lib/components/essay/EssayCard.svelte';
-	import EssayHeading from '$lib/components/essay/EssayHeading.svelte';
-	import EssayImage from '$lib/components/essay/EssayImage.svelte';
-	import EssayQuote from '$lib/components/essay/EssayQuote.svelte';
+	import EssayCard from '$components/essay/EssayCard.svelte';
+	import EssayHeading from '$components/essay/EssayHeading.svelte';
+	import EssayImage from '$components/essay/EssayImage.svelte';
+	import EssayQuote from '$components/essay/EssayQuote.svelte';
 	import Why from './Why.gif';
-	import EssayHr from '$lib/components/essay/EssayHR.svelte';
-	import EssayList from '$lib/components/essay/EssayList.svelte';
+	import EssayHr from '$components/essay/EssayHR.svelte';
+	import EssayList from '$components/essay/EssayList.svelte';
 	import MediaQuery from 'svelte-media-queries';
 	import TwoButtonsHorizontal from './two_buttons_horizontal.jpeg';
 	import TwoButtonsVertical from './two_buttons_vertical.jpeg';
-	import EssayLi from '$lib/components/essay/EssayListItem.svelte';
-	import Footnote from '$lib/components/essay/Footnote.svelte';
+	import EssayLi from '$components/essay/EssayListItem.svelte';
+	import Footnote from '$components/essay/Footnote.svelte';
 	import MonsterIntro from './monster_intro.png';
 	import MonsterTeaching from './monster_teaching.png';
 	import MonsterAngry from './monster_angry.png';
