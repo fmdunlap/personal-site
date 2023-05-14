@@ -17,7 +17,7 @@
 </script>
 
 <div class="fixed left-0 top-0 -z-10 h-screen w-screen overflow-hidden bg-black">
-	<MatrixRain numColumns={50} numRows={90} fadingColor={{ r: r, g: g, b: b }} />
+	<MatrixRain fadingColor={{ r: r, g: g, b: b }} />
 </div>
 
 <div class="mx-10 my-5 flex flex-col gap-6">
