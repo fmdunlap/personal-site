@@ -1,19 +1,18 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
-	import { get } from 'svelte/store';
-
-	const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ';
 
 	export let numColumns: number = 75;
 	export let numRows: number = 100;
-	export let updateMsec: number = 66;
-	export let stateDecayRate: number = 0.05;
+	export let updateMsec: number = 75;
+	export let stateDecayRate: number = 0.03;
 	export let stateInflectionPoint: number = 0.75;
-	export let newRainChance: number = 0.05;
+	export let newRainChance: number = 0.03;
 	export let brightColor: Color = { r: 255, g: 255, b: 255 };
 	export let fadingColor: Color = { r: 0, g: 255, b: 0 };
 	export let disabledColor: Color = { r: 0, g: 0, b: 0 };
 	export let usePhrase: string = '';
+
+	const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ';
 
 	type Color = {
 		r: number;
