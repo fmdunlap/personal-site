@@ -94,18 +94,16 @@
 	}
 
 	function generateCharacterArray(nCols: number, nRows: number): string[][] {
-		return Array(nCols)
-			.join()
-			.split(',')
-			.map(() => {
-				return generateCol(nRows);
-			});
+		let charArray: string[][] = [];
+		for (let i = 0; i < nCols; i++) {
+			charArray.push(generateCol(nRows, i));
+		}
+		return charArray;
 	}
 
-	function generateCol(numRows: number): string[] {
+	function generateCol(numRows: number, offset: number): string[] {
 		if (usePhrase) {
 			let col: string[] = [];
-			const offset = Math.floor(Math.random() * usePhrase.length);
 			for (let i = 0; i < numRows; i++) {
 				let char = usePhrase?.at((offset + i) % usePhrase.length);
 				if (char != undefined) {
