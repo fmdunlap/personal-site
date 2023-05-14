@@ -49,6 +49,6 @@
 		>
 	</div>
 	<div class="my-4 flex flex-row">
-		<button type="submit" class="flex-1 rounded-xl bg-sky-600 p-3 text-white">Submit</button>
+		<button type="submit" class="flex-1 rounded-xl bg-green-900 p-3 text-white">Submit</button>
 	</div>
 </form>

@@ -1,10 +1,10 @@
 <script>
+	import '../app.css';
+	import capitalize from 'capitalize';
+	import { dev } from '$app/environment';
 	import { page } from '$app/stores';
 	import { segmentize } from '$lib/UrlLib';
-	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
-	import capitalize from 'capitalize';
-	import '../app.css';
 
 	inject({ mode: dev ? 'development' : 'production' });
 
@@ -15,6 +15,19 @@
 
 <svelte:head>
 	<title>{pageTitle}</title>
+	<!-- Google Analytics -->
+	{#if !dev}
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-YB2VVTMFKW"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+
+			gtag('config', 'G-YB2VVTMFKW');
+		</script>
+	{/if}
 </svelte:head>
 
 <slot />
