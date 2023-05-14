@@ -1,17 +1,4 @@
-<script lang="ts">
-	import Card from '../components/Card.svelte';
-	import ContactForm from '../components/ContactForm.svelte';
-	import EssayLinks from '../components/EssayLinks.svelte';
-	import Socials from '../components/Socials.svelte';
-	import VideoGallery from '../components/VideoGallery.svelte';
-	import Profile from '../images/profile_256.jpg';
-	import type { ActionData, PageData } from './$types';
-
-	export let form: ActionData;
-	export let data: PageData;
-</script>
-
-<Card direction="col" switchPoint="lg" extras="xl:mt-8">
+<!-- <Card direction="col" switchPoint="lg" extras="xl:mt-8">
 	<img
 		class="h-fit w-fit self-center rounded-full border-2 border-gray-200 object-cover hover:shadow-md"
 		src={Profile}
@@ -61,4 +48,4 @@
 		<p class="text-md font-bold md:text-xl">Or you can always DM me 😄</p>
 		<Socials />
 	</div>
-</Card>
+</Card> -->
