@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
+	import { get } from 'svelte/store';
 
-	const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+	const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ';
 
 	export let numColumns: number = 75;
-	export let numRows: number = 65;
+	export let numRows: number = 100;
 	export let updateMsec: number = 66;
 	export let stateDecayRate: number = 0.05;
 	export let stateInflectionPoint: number = 0.75;
@@ -19,94 +20,93 @@
 		b: number;
 	};
 
-	type MatrixCharacter = {
-		char: string;
-		statePercent: number; // 0.0 - 1.0. 0.0 is fully off, 1.0 is initially on.
+	type Cell = {
+		col: number;
+		row: number;
 	};
 
 	let updateInterval: NodeJS.Timer | undefined = undefined;
 
 	let outerDiv: HTMLDivElement;
-	let textCanvas: MatrixCharacter[][] = [];
-	let activeCharacters: [number, number][] = [];
+	let characterGrid: string[][] = [];
+	let activationGrid: number[][] = [];
+	let activeCells: Cell[] = [];
 
 	onDestroy(() => {
 		clearInterval(updateInterval);
 	});
 
 	onMount(() => {
-		textCanvas = generateMatrixCharacterArray();
-		for (let i = 0; i < numColumns; i++) {
-			if (Math.random() < newRainChance * numRows) {
-				activeCharacters.push([i, Math.floor(Math.random() * numRows)]);
-			}
-		}
+		calculateNumRowsAndCols();
+		characterGrid = generateCharacterArray(numColumns, numRows);
+		activationGrid = [...Array(numColumns)].map((e) => Array(numRows));
 		initActiveRainDrops();
 		updateInterval = setInterval(update, updateMsec);
 	});
 
+	function calculateNumRowsAndCols() {
+		let charHeight = getCharacterHeight();
+		// It's a pretty imperfect measure, but the typical character height:width ratio is 1:0.8.
+		numRows = Math.min(numRows, Math.floor(window.screen.height / charHeight));
+		numColumns = Math.min(numColumns, Math.floor(window.screen.width / (charHeight / 0.8)));
+	}
+
 	function initActiveRainDrops() {
-		activeCharacters.forEach(([col, row]) => {
-			let curState = 1;
-			let r = row;
-			let c = col;
-			while (curState > 0 && r >= 0) {
-				textCanvas[c][r].statePercent = curState;
-				curState -= stateDecayRate;
-				r--;
-				if (activeCharacters.includes([c, r])) {
-					break;
+		for (let i = 0; i < numColumns; i++) {
+			if (Math.random() < newRainChance * numRows) {
+				let state = 1;
+				let row = Math.floor(Math.random() * numRows);
+				while (state > 0 && row >= 0) {
+					activationGrid[i][row] = state;
+					activeCells.push({ col: i, row: row });
+					state -= stateDecayRate;
+					row -= 1;
 				}
 			}
-		});
+		}
 	}
 
 	function update() {
-		activeCharacters.sort((a, b) => b[1] - a[1]);
-		for (let col = 0; col < numColumns; col++) {
-			for (let row = 0; row < numRows; row++) {
-				if (activeCharacters.filter(([c, r]) => r == row && c == col).length > 0) {
-					textCanvas[col][row].statePercent = 1;
-					continue;
-				}
-				textCanvas[col][row].statePercent = Math.max(
-					0,
-					textCanvas[col][row].statePercent - stateDecayRate
-				);
+		let newActives: Cell[] = [];
+		activeCells.forEach((cell) => {
+			if (activationGrid[cell.col][cell.row] == 1 && cell.row < numRows - 1) {
+				newActives.push({
+					col: cell.col,
+					row: cell.row + 1
+				});
+				activationGrid[cell.col][cell.row + 1] = 1;
 			}
-		}
-		activeCharacters = activeCharacters.map((char) => {
-			return [char[0], char[1] + 1];
-		});
-		activeCharacters = activeCharacters.filter((char) => {
-			return char[1] < numRows;
+			activationGrid[cell.col][cell.row] -= stateDecayRate;
+			if (activationGrid[cell.col][cell.row] > 0) {
+				newActives.push(cell);
+			}
 		});
 		for (let i = 0; i < numColumns; i++) {
 			if (Math.random() < newRainChance) {
-				activeCharacters.push([i, 0]);
+				activationGrid[i][0] = 1;
+				newActives.push({
+					col: i,
+					row: 0
+				});
 			}
 		}
+		activeCells = newActives;
 	}
 
-	function generateMatrixCharacterArray(): MatrixCharacter[][] {
-		return Array(numColumns)
+	function generateCharacterArray(nCols: number, nRows: number): string[][] {
+		return Array(nCols)
 			.join()
 			.split(',')
-			.map(function () {
-				return generateRandomCol(numRows);
+			.map(() => {
+				return generateRandomCol(nRows);
 			});
 	}
 
-	function generateRandomCol(numRows: number): MatrixCharacter[] {
+	function generateRandomCol(numRows: number): string[] {
 		return Array(numRows)
 			.join()
 			.split(',')
-			.map(function () {
-				return {
-					char: alphabet.charAt(Math.floor(Math.random() * alphabet.length)),
-					statePercent: 0
-				};
-			});
+			.map(() => alphabet.charAt(Math.floor(Math.random() * alphabet.length)));
 	}
 
 	function getMatrixCharacterColor(statePercent: number): string {
@@ -136,19 +136,41 @@
 	function lerp(start: number, end: number, amt: number) {
 		return (1 - amt) * start + amt * end;
 	}
+
+	function getCharacterHeight(): number {
+		var temp = document.createElement(outerDiv.nodeName),
+			ret;
+		temp.setAttribute(
+			'style',
+			'margin:0; padding:0; ' +
+				'font-family:' +
+				(outerDiv.style.fontFamily || 'inherit') +
+				'; ' +
+				'line-height: 1;' +
+				'font-size:' +
+				(outerDiv.style.fontSize || 'inherit')
+		);
+		temp.innerHTML = 'A';
+
+		outerDiv.parentNode?.parentNode?.appendChild(temp);
+		ret = temp.clientHeight;
+		temp.parentNode?.removeChild(temp);
+
+		return ret;
+	}
 </script>
 
 <!-- <svelte:window class="scroll-" -->
 
 <div class="flex grow select-none flex-row overflow-hidden font-mono" bind:this={outerDiv}>
-	{#each textCanvas as column}
+	{#each characterGrid as column, i}
 		<div class="flex grow flex-col">
-			{#each column as matrixChar}
+			{#each column as matrixChar, j}
 				<div
-					style="color: {getMatrixCharacterColor(matrixChar.statePercent)}"
+					style="color: {getMatrixCharacterColor(activationGrid[i][j])}"
 					class="inline-block grow self-center justify-self-center p-0 text-center align-super font-bold leading-none"
 				>
-					{matrixChar.char}
+					{characterGrid[i][j]}
 				</div>
 			{/each}
 		</div>
