@@ -13,6 +13,7 @@
 	export let brightColor: Color = { r: 255, g: 255, b: 255 };
 	export let fadingColor: Color = { r: 0, g: 255, b: 0 };
 	export let disabledColor: Color = { r: 0, g: 0, b: 0 };
+	export let usePhrase: string = '';
 
 	type Color = {
 		r: number;
@@ -98,11 +99,22 @@
 			.join()
 			.split(',')
 			.map(() => {
-				return generateRandomCol(nRows);
+				return generateCol(nRows);
 			});
 	}
 
-	function generateRandomCol(numRows: number): string[] {
+	function generateCol(numRows: number): string[] {
+		if (usePhrase) {
+			let col: string[] = [];
+			const offset = Math.floor(Math.random() * usePhrase.length);
+			for (let i = 0; i < numRows; i++) {
+				let char = usePhrase?.at((offset + i) % usePhrase.length);
+				if (char != undefined) {
+					col.push(char);
+				}
+			}
+			return col;
+		}
 		return Array(numRows)
 			.join()
 			.split(',')
