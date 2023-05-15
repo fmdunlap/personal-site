@@ -70,9 +70,9 @@
 		gap={form?.success ? 'gap-8' : 'gap-4'}
 		padding="p-6"
 		background="bg-zinc-800"
-		extras="bg-opacity-95 text-slate-100"
+		extras="bg-opacity-95"
 	>
-		<p class="flex-grow text-center text-2xl font-bold xl:text-3xl">Get in touch.</p>
+		<p class="flex-grow text-center text-2xl font-bold text-slate-100 xl:text-3xl">Get in touch.</p>
 		{#if !form?.success}
 			<ContactForm action="?/contact" errors={form?.errors} data={form?.data} />
 		{:else}
@@ -80,10 +80,6 @@
 				<p class="mx-auto text-xl">Successfully Sent Message!</p>
 			</Card>
 		{/if}
-		<div class="hidden flex-col items-center rounded-md px-10 py-2">
-			<p class="text-md font-bold md:text-xl">Or you can always DM me 😄</p>
-			<Socials />
-		</div>
 		<button
 			class="h-min self-end bg-zinc-800 text-zinc-900"
 			on:click={() => {
