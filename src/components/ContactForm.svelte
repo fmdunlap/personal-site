@@ -14,7 +14,7 @@
 		<p class="italic text-red-500">{errors?.email}</p>
 	{/if}
 	<div class="my-1 flex flex-col lg:flex-row">
-		<label for="name" class="w-24 text-lg font-bold">Email</label>
+		<label for="name" class="w-24 text-lg font-bold text-slate-100">Email</label>
 		<input
 			type="text"
 			class="flex-grow rounded-lg border border-solid border-slate-300 px-2"
@@ -27,7 +27,7 @@
 		<p class="italic text-red-500">{errors?.subject}</p>
 	{/if}
 	<div class="my-1 flex flex-col lg:flex-row">
-		<label for="name" class="w-24 text-lg font-bold">Subject</label>
+		<label for="name" class="w-24 text-lg font-bold text-slate-100">Subject</label>
 		<input
 			type="text"
 			class="flex-1 rounded-lg border border-solid border-slate-300 px-2"
@@ -40,7 +40,7 @@
 		<p class="italic text-red-500">{errors.message}</p>
 	{/if}
 	<div class="my-1 flex flex-col lg:flex-row">
-		<label for="name" class="w-24 text-lg font-bold">Message</label>
+		<label for="name" class="w-24 text-lg font-bold text-slate-100">Message</label>
 		<textarea
 			id="message"
 			name="message"
