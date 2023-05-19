@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 
-	export let numColumns: number = 75;
-	export let numRows: number = 100;
+	export let numColumns: number = 200;
+	export let numRows: number = 200;
 	export let updateMsec: number = 75;
-	export let stateDecayRate: number = 0.03;
+	export let stateDecayRate: number = 0.05;
 	export let stateInflectionPoint: number = 0.75;
-	export let newRainChance: number = 0.03;
+	export let newRainChance: number = 0.02;
 	export let brightColor: Color = { r: 255, g: 255, b: 255 };
 	export let fadingColor: Color = { r: 0, g: 255, b: 0 };
 	export let disabledColor: Color = { r: 0, g: 0, b: 0 };
@@ -32,12 +32,16 @@
 	let activationGrid: number[][] = [];
 	let activeCells: Cell[] = [];
 
+	let screenWidth = 0;
+	let screenHeight = 0;
+
 	onDestroy(() => {
 		clearInterval(updateInterval);
 	});
 
 	onMount(() => {
 		calculateNumRowsAndCols();
+		console.log(numRows, numColumns);
 		characterGrid = generateCharacterArray(numColumns, numRows);
 		activationGrid = [...Array(numColumns)].map((e) => Array(numRows));
 		initActiveRainDrops();
@@ -47,8 +51,8 @@
 	function calculateNumRowsAndCols() {
 		let charHeight = getCharacterHeight();
 		// It's a pretty imperfect measure, but the typical character height:width ratio is 1:0.8.
-		numRows = Math.min(numRows, Math.floor(window.screen.height / charHeight));
-		numColumns = Math.min(numColumns, Math.floor(window.screen.width / (charHeight / 0.8)));
+		numRows = Math.min(numRows, Math.floor(screenHeight / charHeight));
+		numColumns = Math.min(numColumns, Math.floor(screenWidth / (charHeight / 0.8)));
 	}
 
 	function initActiveRainDrops() {
@@ -169,7 +173,7 @@
 	}
 </script>
 
-<!-- <svelte:window class="scroll-" -->
+<svelte:window bind:innerWidth={screenWidth} bind:innerHeight={screenHeight}/>
 
 <div class="flex grow select-none flex-row overflow-hidden font-mono" bind:this={outerDiv}>
 	{#each characterGrid as column, i}
