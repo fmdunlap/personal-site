@@ -21,33 +21,39 @@
 </div>
 
 <div class="mx-10 my-5 flex flex-col gap-6">
-	<Card direction="col" switchPoint="lg" background="bg-zinc-800" extras="xl:mt-8 bg-opacity-95">
-		<img
-			class="h-fit w-fit self-center rounded-full border-2 border-gray-200 object-cover hover:shadow-md"
-			src={Profile}
-			alt="Me - profile."
-		/>
-		<div class="flex flex-col text-white">
-			<p class="mb-2 flex-grow text-center text-2xl font-bold xl:text-3xl">Hi, I'm Forrest! 👋</p>
-			<hr class="mx-auto h-px w-2/5 border-0 bg-slate-500" />
-			<p class="mb-2 mt-4">
-				After spending four years at Google, I decided to shift my focus to full-time
-				entrepreneurship.
-			</p>
-			<p class="my-2">
-				My work centers around the intersection of software, emotional intelligence, and
-				entrepreneurship. I'm passionate about helping others improve their lives through the power
-				of technology and personal growth.
-			</p>
-			<p class="my-2">
-				I'm currently in the process of building a new business and exploring the possibilities of
-				what's next.
-			</p>
-			<div class="mt-4 self-center">
-				<Socials />
+	<div class="md:mx-auto">
+		<Card direction="row" switchPoint="lg" background="bg-zinc-800" extras="xl:mt-8 bg-opacity-95">
+			<div class="flex flex-row gap-4 xl:mx-36">
+				<img
+					class="h-fit w-fit self-center rounded-full border-2 border-gray-200 object-cover hover:shadow-md"
+					src={Profile}
+					alt="Me - profile."
+				/>
+				<div class="flex flex-col text-white xl:mx-20">
+					<p class="mb-2 flex-grow text-center text-2xl font-bold xl:text-3xl">
+						Hi, I'm Forrest! 👋
+					</p>
+					<hr class="mx-auto h-px w-2/5 border-0 bg-slate-500" />
+					<p class="mb-2 mt-4 text-lg">
+						After spending four years at Google, I decided to shift my focus to full-time
+						entrepreneurship.
+					</p>
+					<p class="my-2 text-lg">
+						My work centers around the intersection of software, emotional intelligence, and
+						entrepreneurship. I'm passionate about helping others improve their lives through the
+						power of technology and personal growth.
+					</p>
+					<p class="my-2 text-lg">
+						I'm currently in the process of building a new business and exploring the possibilities
+						of what's next.
+					</p>
+					<div class="mt-4 self-center">
+						<Socials />
+					</div>
+				</div>
 			</div>
-		</div>
-	</Card>
+		</Card>
+	</div>
 
 	<hr class="mx-20 border border-gray-400" />
 
