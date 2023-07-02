@@ -28,20 +28,20 @@
 			alt="Me - profile."
 		/>
 		<div class="flex flex-col text-white">
-			<p class="mb-2 flex-grow text-center text-2xl font-bold xl:text-3xl">Hi, I'm Forrest!</p>
+			<p class="mb-2 flex-grow text-center text-2xl font-bold xl:text-3xl">Hi, I'm Forrest! 👋</p>
 			<hr class="mx-auto h-px w-2/5 border-0 bg-slate-500" />
 			<p class="mb-2 mt-4">
-				I was, until recently, a corporate software engineer. After spending four years at Google, I
-				decided to shift my focus to full-time content creation.
+				After spending four years at Google, I decided to shift my focus to full-time
+				entrepreneurship.
 			</p>
 			<p class="my-2">
-				My work centers around the intersection of software, mental health and emotional
-				intelligence, and entrepreneurship. I'm passionate about helping others improve their lives
-				through the power of technology and personal growth.
+				My work centers around the intersection of software, emotional intelligence, and
+				entrepreneurship. I'm passionate about helping others improve their lives through the power
+				of technology and personal growth.
 			</p>
 			<p class="my-2">
-				I'm currently in the process of creating a new business venture, exploring the possibilities
-				of what's next.
+				I'm currently in the process of building a new business and exploring the possibilities of
+				what's next.
 			</p>
 			<div class="mt-4 self-center">
 				<Socials />
