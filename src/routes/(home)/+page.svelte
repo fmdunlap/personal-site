@@ -16,14 +16,16 @@
 	export let form;
 </script>
 
-<div class="fixed left-0 top-0 -z-10 h-screen w-screen overflow-hidden bg-black">
+<div
+	class="fixed left-0 top-0 -z-10 h-screen min-h-full w-screen min-w-full overflow-hidden bg-black"
+>
 	<MatrixRain fadingColor={{ r: r, g: g, b: b }} />
 </div>
 
 <div class="mx-10 my-5 flex flex-col gap-6">
 	<div class="md:mx-auto">
 		<Card direction="row" switchPoint="lg" background="bg-zinc-800" extras="xl:mt-8 bg-opacity-95">
-			<div class="flex flex-row gap-4 xl:mx-36">
+			<div class="flex flex-col gap-4 md:flex-row xl:mx-36">
 				<img
 					class="h-fit w-fit self-center rounded-full border-2 border-gray-200 object-cover hover:shadow-md"
 					src={Profile}
