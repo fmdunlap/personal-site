@@ -25,15 +25,17 @@
 		unitDirection: Vector;
 	};
 
-	const N_MOVERS = 5;
-	const MOVER_SIZE = 5;
+	let N_MOVERS = 5;
+	let MOVER_SIZE = 10;
 	// Speed is the scalar. Direction vector is determined by destination.
-	let MOVER_SPEED = 50; // Px/Sec
+	let MOVER_SPEED = 150; // Px/Sec
 	let TRACER_LEN = 3;
 
 	const GRID_MARGIN = 30;
-	const GRID_X_POINTS = 25;
-	const GRID_Y_POINTS = 25;
+	let GRID_X_POINTS = 25;
+	let GRID_Y_POINTS = 25;
+
+	let reset = false;
 
 	onMount(() => {
 		sketch = (p5) => {
@@ -191,6 +193,10 @@
 			};
 
 			p5.draw = () => {
+				if (reset) {
+					initMovers(N_MOVERS);
+					reset = false;
+				}
 				p5.background(186, 203, 230);
 				drawGrid();
 				movers.forEach((mover) => {
@@ -203,6 +209,7 @@
 </script>
 
 <div class="m-4 flex flex-col bg-gray-600 p-4">
+	<p class="mb-2 text-lg">Dynamic</p>
 	<label>
 		Tracer Length
 		<input type="range" bind:value={TRACER_LEN} min="0" max="5" step="1" />
@@ -210,9 +217,28 @@
 	</label>
 	<label>
 		Speed
-		<input type="range" bind:value={MOVER_SPEED} min="0" max="75" step="1" />
+		<input type="range" bind:value={MOVER_SPEED} min="0" max="200" step="1" />
 		{MOVER_SPEED}
 	</label>
+	<label>
+		Mover Size
+		<input type="range" bind:value={MOVER_SIZE} min="0" max="30" step="1" />
+		{MOVER_SIZE}
+	</label>
+
+	<p class="mb-2 mt-4 text-lg">Requires Update</p>
+	<label>
+		Number of Movers
+		<input type="range" bind:value={N_MOVERS} min="0" max="30" step="1" />
+		{N_MOVERS}
+	</label>
+
+	<button
+		class="mt-4 w-min rounded-md bg-gray-900 px-4 py-2 text-center"
+		on:click={() => {
+			reset = true;
+		}}>Update</button
+	>
 </div>
 
 <div class="p-6">
