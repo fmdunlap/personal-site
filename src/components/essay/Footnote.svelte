@@ -4,14 +4,12 @@
 	export let number: number;
 
 	function makeFootnoteVisibile() {
-		console.log('Becoming visible');
 		if (timerId) {
 			clearTimeout(timerId);
 		}
 		footnoteVisible = true;
 		timerId = setTimeout(() => {
 			footnoteVisible = false;
-			console.log('Becoming invisible.');
 			timerId = null;
 		}, 5000);
 	}

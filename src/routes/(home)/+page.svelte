@@ -60,9 +60,23 @@
 	<hr class="mx-20 border border-gray-400" />
 
 	<div class="flex flex-col gap-8 xl:flex-row">
-		<Card direction="col" background="bg-zinc-800" extras="basis-2/3 xl:p-8 bg-opacity-95">
+		<Card direction="col" background="bg-zinc-800" extras="basis-1/3 xl:p-8 bg-opacity-95">
 			<p class="flex text-center text-2xl font-bold text-slate-100 xl:text-3xl">Videos</p>
 			<VideoGallery videos={data.gallery.videos} />
+		</Card>
+
+		<Card direction="col" background="bg-zinc-800" extras="basis-1/3 xl:p-8 bg-opacity-95">
+			<p class="text-start text-2xl font-bold text-slate-100 xl:text-3xl">Animations</p>
+			<ul class="list-inside list-none">
+				<li>
+					<a
+						href="/animations/coincidence"
+						class="text-md text-center text-lg text-slate-100 underline decoration-sky-300 decoration-2 hover:text-slate-300 hover:decoration-sky-400 xl:text-xl"
+					>
+						Coincidence
+					</a>
+				</li>
+			</ul>
 		</Card>
 
 		<Card direction="col" background="bg-zinc-800" extras="basis-1/3 xl:p-8 bg-opacity-95">

@@ -25,7 +25,7 @@
 		row: number;
 	};
 
-	let updateInterval: NodeJS.Timer | undefined = undefined;
+	let updateInterval: ReturnType<typeof setTimeout> | number | undefined = undefined;
 
 	let outerDiv: HTMLDivElement;
 	let characterGrid: string[][] = [];
@@ -41,7 +41,6 @@
 
 	onMount(() => {
 		calculateNumRowsAndCols();
-		console.log(numRows, numColumns);
 		characterGrid = generateCharacterArray(numColumns, numRows);
 		activationGrid = [...Array(numColumns)].map((e) => Array(numRows));
 		initActiveRainDrops();
@@ -173,7 +172,7 @@
 	}
 </script>
 
-<svelte:window bind:innerWidth={screenWidth} bind:innerHeight={screenHeight}/>
+<svelte:window bind:innerWidth={screenWidth} bind:innerHeight={screenHeight} />
 
 <div class="flex grow select-none flex-row overflow-hidden font-mono" bind:this={outerDiv}>
 	{#each characterGrid as column, i}
