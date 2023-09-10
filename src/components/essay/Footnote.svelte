@@ -15,7 +15,7 @@
 	}
 </script>
 
-<div class="group relative inline ps-px">
+<div class="group relative z-50 inline ps-px">
 	<span
 		class="align-top text-xs font-bold text-sky-600 underline"
 		on:mouseenter={makeFootnoteVisibile}>{number}</span

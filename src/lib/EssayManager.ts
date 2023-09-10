@@ -1,5 +1,6 @@
 import type { SvelteComponent } from 'svelte';
 import Uncertainty from './essay/uncertainty/Uncertainty.svelte';
+import SvelteKit from './essay/sveltekit/Sveltekit.svelte';
 
 export type Essay = {
 	title: string;
@@ -12,6 +13,11 @@ export const essays: Essay[] = [
 		title: '[Un]Certainty is [not] the Enemy',
 		slug: 'uncertainty',
 		component: Uncertainty
+	},
+	{
+		title: 'The Joy of SvelteKit',
+		slug: 'sveltekit-is-better',
+		component: SvelteKit
 	}
 ];
 

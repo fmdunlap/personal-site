@@ -7,14 +7,15 @@ import {
 	SMTP_EMAIL,
 	SMTP_HOST,
 	SMTP_PASSWORD,
-	YOUTUBE_API_KEY
+	YOUTUBE_API_KEY,
+	CHANNEL_UPLOADS_PLAYLIST_ID,
+	MY_EMAIL
 } from '$env/static/private';
+import type { Actions } from './$types';
 
 type ValidationResult = { success: false; error: string } | { success: true };
 type Validator = (value: string) => ValidationResult;
 
-const CHANNEL_UPLOADS_PLAYLIST_ID = 'UUOB_8z9-At9wt4X-EZQOQVQ';
-const MY_EMAIL = 'forrestmdunlap@gmail.com';
 const SMTP_TRANSPORT = nodemailer.createTransport({
 	host: SMTP_HOST,
 	port: 465,
@@ -111,7 +112,7 @@ export const actions = {
 
 		return { success: true };
 	}
-};
+} satisfies Actions;
 
 const youtube = google.youtube({
 	version: 'v3',
