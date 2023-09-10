@@ -182,9 +182,11 @@
 				instantly available and in sync across all components that import it. No prop drilling, no
 				context providers, just straightforward and readable code.
 			</p>
-			<p>
-				If you click the +/- buttons in the component, you'll notice tha the value of count earlier
-				on the page also changes.
+			<p class="font-bold">
+				Here's the real kicker, though. If you click the +/- buttons in the component, you'll notice
+				tha the value of count earlier on the page also changes. <span class="italic">
+					Simply because they use the same store.</span
+				>
 			</p>
 			<p>
 				Take a second to process that. SvelteKit doesn't just make coding easier; it makes it
