@@ -10,9 +10,9 @@ console.log("Hello, world!");`;
 	{@html github}
 </svelte:head>
 
-<div class="rounded-lg bg-zinc-800">
+<div class="rounded-lg bg-zinc-800 text-sm">
 	<div class="rounded-t-lg bg-zinc-200 p-2">
-		<p class="select-none font-mono">{filename}</p>
+		<p class="font-mono select-none">{filename}</p>
 	</div>
 	<HighlightSvelte {code} let:highlighted>
 		<LineNumbers {highlighted} hideBorder />
