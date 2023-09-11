@@ -1,177 +1,102 @@
 <script lang="ts">
-	import Card from '$components/Card.svelte';
-	import MatrixRain from './MatrixRain.svelte';
-	import Profile from '$images/profile_256.jpg';
+	import { onMount } from 'svelte';
+	import AnimatedGreeting from './AnimatedGreeting.svelte';
 	import Socials from '$components/Socials.svelte';
-	import VideoGallery from '$components/VideoGallery.svelte';
-	import EssayLinks from '$components/EssayLinks.svelte';
-	import ContactForm from '$components/ContactForm.svelte';
+	import Card from '$components/Card.svelte';
 
-	$: colorCardHidden = true;
-	$: r = 0;
-	$: g = 255;
-	$: b = 0;
+	type Color = {
+		r: number;
+		g: number;
+		b: number;
+	};
 
-	export let data;
-	export let form;
+	// The initial color of the top left gradient
+	const gradientFromStart = { r: 2, g: 115, b: 2 };
+	// The final color of the top left gradient; dips to a darker emerald.
+	const gradientFromEnd = { r: 6, g: 110, b: 69 };
+
+	// The initial color of the bottom right gradient
+	const gradientToStart = { r: 1, g: 65, b: 0 };
+	// The final color of the bottom right gradient; dips to a darker blue.
+	const gradientToEnd = { r: 6, g: 90, b: 120 };
+
+	$: gradientFrom = lerpRGB(gradientFromStart, gradientFromEnd, 0);
+	$: gradientTo = lerpRGB(gradientToStart, gradientToEnd, 0);
+
+	$: backgroundGradientString = `linear-gradient(135deg, rgba(${gradientFrom.r},${gradientFrom.g},${gradientFrom.b},1) 0%, rgba(${gradientTo.r},${gradientTo.g},${gradientTo.b},1) 100%)`;
+
+	function lerpRGB(color1: Color, color2: Color, t: number) {
+		let color = {
+			r: 0,
+			g: 0,
+			b: 0
+		};
+		color.r = color1.r + (color2.r - color1.r) * t;
+		color.g = color1.g + (color2.g - color1.g) * t;
+		color.b = color1.b + (color2.b - color1.b) * t;
+		return color;
+	}
+
+	let currentTime = 0.0;
+	let timeStep = 0.0025;
+	let backgroundColorUpdateInterval: NodeJS.Timeout;
+	function updateBackgroundColor() {
+		gradientFrom = lerpRGB(gradientFromStart, gradientFromEnd, currentTime);
+		gradientTo = lerpRGB(gradientToStart, gradientToEnd, currentTime);
+		currentTime += timeStep;
+		if (currentTime >= 0.5 || currentTime <= 0.0) {
+			timeStep = timeStep * -1;
+		}
+		return () => {
+			clearInterval(backgroundColorUpdateInterval);
+		};
+	}
+
+	onMount(() => {
+		backgroundColorUpdateInterval = setInterval(updateBackgroundColor, 17);
+	});
 </script>
 
+<svelte:head>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Mulish&family=Space+Mono&display=swap"
+		rel="stylesheet"
+	/>
+</svelte:head>
+
 <div
-	class="fixed left-0 top-0 -z-10 h-screen min-h-full w-screen min-w-full overflow-hidden bg-black"
+	class="min-w-screen flex min-h-screen flex-col bg-sky-500"
+	style="background: {backgroundGradientString};"
 >
-	<MatrixRain fadingColor={{ r: r, g: g, b: b }} />
-</div>
-
-<div class="mx-10 my-5 flex flex-col gap-6">
-	<div class="md:mx-auto">
-		<Card direction="row" switchPoint="lg" background="bg-zinc-800" extras="xl:mt-8 bg-opacity-95">
-			<div class="flex flex-col gap-4 md:flex-row xl:mx-36">
-				<img
-					class="h-fit w-fit self-center rounded-full border-2 border-gray-200 object-cover hover:shadow-md"
-					src={Profile}
-					alt="Me - profile."
-				/>
-				<div class="flex flex-col text-white xl:mx-20">
-					<p class="mb-2 flex-grow text-center text-2xl font-bold xl:text-3xl">
-						Hi, I'm Forrest! 👋
-					</p>
-					<hr class="mx-auto h-px w-2/5 border-0 bg-slate-500" />
-					<p class="mb-2 mt-4 text-lg">
-						After spending four years at Google, I decided to shift my focus to full-time
-						entrepreneurship.
-					</p>
-					<p class="my-2 text-lg">
-						My work centers around the intersection of software, emotional intelligence, and
-						entrepreneurship. I'm passionate about helping others improve their lives through the
-						power of technology and personal growth.
-					</p>
-					<p class="my-2 text-lg">
-						I'm currently in the process of building a new business and exploring the possibilities
-						of what's next.
-					</p>
-					<div class="mt-4 self-center">
-						<Socials />
-					</div>
+	<p class="mx-auto mt-8 font-landing text-xl text-white">Forrest Dunlap</p>
+	<div class="m-auto flex grow basis-10">
+		<div class="my-auto flex flex-col lg:flex-row">
+			<div
+				class="mx-auto flex min-w-0 max-w-sm flex-grow-0 flex-col gap-y-4 p-12 text-white md:max-w-none"
+			>
+				<div class="flex select-none flex-row font-code text-lg md:text-2xl lg:text-4xl">
+					<p>console.log("</p>
+					<AnimatedGreeting />
+					<p>!");</p>
 				</div>
+				<p class="max-w-2xl font-landing md:text-lg lg:text-xl">
+					Hi! My name is Forrest Dunlap. I'm all about exploring the crossroads of code, creativity,
+					and entrepreneurship. Dive into my YouTube channel for tech insights, or get a deeper dive
+					on my blog. Let's journey through the digital landscape together.
+				</p>
 			</div>
-		</Card>
+			<img
+				class="mx-auto h-fit w-fit rounded-xl lg:m-auto"
+				src="http://placekitten.com/200/200"
+				alt="Cat"
+			/>
+		</div>
 	</div>
-
-	<hr class="mx-20 border border-gray-400" />
-
-	<div class="flex flex-col gap-8 xl:flex-row">
-		<Card direction="col" background="bg-zinc-800" extras="basis-1/3 xl:p-8 bg-opacity-95">
-			<p class="flex text-center text-2xl font-bold text-slate-100 xl:text-3xl">Videos</p>
-			<VideoGallery videos={data.gallery.videos} />
-		</Card>
-
-		<Card direction="col" background="bg-zinc-800" extras="basis-1/3 xl:p-8 bg-opacity-95">
-			<p class="text-start text-2xl font-bold text-slate-100 xl:text-3xl">Animations</p>
-			<ul class="list-inside list-none">
-				<li>
-					<a
-						href="/animations/coincidence"
-						class="text-md text-center text-lg text-slate-100 underline decoration-sky-300 decoration-2 hover:text-slate-300 hover:decoration-sky-400 xl:text-xl"
-					>
-						Coincidence
-					</a>
-				</li>
-			</ul>
-		</Card>
-
-		<Card direction="col" background="bg-zinc-800" extras="basis-1/3 xl:p-8 bg-opacity-95">
-			<p class="text-start text-2xl font-bold text-slate-100 xl:text-3xl">Essays</p>
-			<EssayLinks />
-		</Card>
-	</div>
-
-	<hr class="mx-20 border border-gray-400" />
-
-	<Card
-		direction="col"
-		gap={form?.success ? 'gap-8' : 'gap-4'}
-		padding="p-6"
-		background="bg-zinc-800"
-		extras="bg-opacity-95"
-	>
-		<p class="flex-grow text-center text-2xl font-bold text-slate-100 xl:text-3xl">Get in touch.</p>
-		{#if !form?.success}
-			<ContactForm action="?/contact" errors={form?.errors} data={form?.data} />
-		{:else}
-			<Card background="bg-green-400" padding="p-24">
-				<p class="mx-auto text-xl">Successfully Sent Message!</p>
-			</Card>
-		{/if}
-		<button
-			class="h-min self-end bg-zinc-800 text-zinc-900"
-			on:click={() => {
-				colorCardHidden = !colorCardHidden;
-			}}
-		>
-			CLICK ME
-		</button>
-	</Card>
-	<div hidden={colorCardHidden}>
-		<Card background="bg-zinc-800" direction="col" extras="z-20 bg-opacity-95">
-			<div class="mx-auto flex flex-col gap-y-2 lg:mx-0">
-				<div class="flex flex-row gap-x-2 text-white">
-					<span class="self-center font-mono">R: </span>
-					<input class="w-10 bg-zinc-700 p-1" bind:value={r} />
-					<input type="range" min="0" max="255" bind:value={r} />
-				</div>
-				<div class="flex flex-row gap-x-2 text-white">
-					<span class="self-center font-mono">G: </span>
-					<input class="w-10 bg-zinc-700 p-1" bind:value={g} />
-					<input type="range" min="0" max="255" bind:value={g} />
-				</div>
-				<div class="flex flex-row gap-x-2 text-white">
-					<span class="self-center font-mono">B: </span>
-					<input class="w-10 bg-zinc-700 p-1" bind:value={b} />
-					<input type="range" min="0" max="255" bind:value={b} />
-				</div>
-			</div>
-			<div class="flex grow flex-col lg:flex-row">
-				<button
-					class="mx-2 grow border border-solid border-white p-2 text-white"
-					on:click={() => {
-						r = 255;
-						g = 105;
-						b = 180;
-					}}
-				>
-					Pink
-				</button>
-				<button
-					class="mx-2 grow border border-solid border-white p-2 text-white"
-					on:click={() => {
-						r = 255;
-						g = 0;
-						b = 0;
-					}}
-				>
-					Red
-				</button>
-				<button
-					class="mx-2 grow border border-solid border-white p-2 text-white"
-					on:click={() => {
-						r = 0;
-						g = 0;
-						b = 255;
-					}}
-				>
-					Blue
-				</button>
-				<button
-					class="mx-2 grow border border-solid border-white p-2 text-white"
-					on:click={() => {
-						r = 0;
-						g = 255;
-						b = 0;
-					}}
-				>
-					Green
-				</button>
-			</div>
+	<div class="m-auto mt-6">
+		<Card background="mb-24 bg-slate-100" extras="">
+			<Socials />
 		</Card>
 	</div>
 </div>

@@ -2,6 +2,10 @@
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
+		fontFamily: {
+			code: ['Space Mono', 'monospace'],
+			landing: ['Mulish', 'sans-serif']
+		},
 		extend: {
 			backgroundImage: {
 				twitterLogo: "url('$images/twitter.svg')",
