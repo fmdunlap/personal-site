@@ -3,6 +3,7 @@
 	import AnimatedGreeting from './AnimatedGreeting.svelte';
 	import Socials from '$components/Socials.svelte';
 	import Card from '$components/Card.svelte';
+	import Headshot from '../../images/Headshot.png';
 
 	type Color = {
 		r: number;
@@ -70,7 +71,7 @@
 	class="min-w-screen flex min-h-screen flex-col bg-sky-500"
 	style="background: {backgroundGradientString};"
 >
-	<p class="mx-auto mt-8 font-landing text-xl text-white">Forrest Dunlap</p>
+	<p class="mx-auto mt-8 font-code text-2xl font-bold text-white">Forrest Dunlap</p>
 	<div class="m-auto flex grow basis-10">
 		<div class="my-auto flex flex-col lg:flex-row">
 			<div
@@ -84,18 +85,15 @@
 				<p class="max-w-2xl font-landing md:text-lg lg:text-xl">
 					Hi! My name is Forrest Dunlap. I'm all about exploring the crossroads of code, creativity,
 					and entrepreneurship. Dive into my YouTube channel for tech insights, or get a deeper dive
-					on my blog. Let's journey through the digital landscape together.
+					on my <a class="underline hover:text-emerald-500" href="/essays">blog</a>. Let's journey through the
+					digital landscape together.
 				</p>
 			</div>
-			<img
-				class="mx-auto h-fit w-fit rounded-xl lg:m-auto"
-				src="http://placekitten.com/200/200"
-				alt="Cat"
-			/>
+			<img class="mx-auto h-64 w-64 rounded-xl lg:m-auto" src={Headshot} alt="Cat" />
 		</div>
 	</div>
 	<div class="m-auto mt-6">
-		<Card background="mb-24 bg-slate-100" extras="">
+		<Card background="bg-slate-100" wipeSizes extras="p-6 mb-24 bg-opacity-80">
 			<Socials />
 		</Card>
 	</div>
