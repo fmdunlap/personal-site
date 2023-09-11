@@ -74,6 +74,7 @@
 	<p class="mx-auto mt-8 font-code text-2xl font-bold text-white">Forrest Dunlap</p>
 	<div class="m-auto flex grow basis-10">
 		<div class="my-auto flex flex-col lg:flex-row">
+			<img class="mx-auto h-64 w-64 rounded-xl lg:m-auto" src={Headshot} alt="Cat" />
 			<div
 				class="mx-auto flex min-w-0 max-w-sm flex-grow-0 flex-col gap-y-4 p-12 text-white md:max-w-none"
 			>
@@ -85,11 +86,10 @@
 				<p class="max-w-2xl font-landing md:text-lg lg:text-xl">
 					Hi! My name is Forrest Dunlap. I'm all about exploring the crossroads of code, creativity,
 					and entrepreneurship. Dive into my YouTube channel for tech insights, or get a deeper dive
-					on my <a class="underline hover:text-emerald-500" href="/essays">blog</a>. Let's journey through the
-					digital landscape together.
+					on my <a class="text-emerald-400 underline hover:text-emerald-500" href="/essays">blog</a
+					>. Let's journey through the digital landscape together.
 				</p>
 			</div>
-			<img class="mx-auto h-64 w-64 rounded-xl lg:m-auto" src={Headshot} alt="Cat" />
 		</div>
 	</div>
 	<div class="m-auto mt-6">

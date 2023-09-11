@@ -14,7 +14,7 @@
 		'Ciao',
 		'Namaste',
 		'Salaam',
-		'Konnichiwa',
+		'HERE',
 		'Merhaba'
 	];
 
