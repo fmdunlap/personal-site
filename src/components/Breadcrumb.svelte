@@ -1,12 +1,21 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import capitalize from 'capitalize';
 	import Card from './Card.svelte';
 	import { segmentize } from '$lib/UrlLib';
+	import { onMount } from 'svelte';
+	import { afterNavigate } from '$app/navigation';
 
-	$: segments = segmentize($page.url.toString()).slice(1);
+	$: segments = [''];
 
 	$: currentPage = segments?.at(-1);
+
+	onMount(() => {
+		segments = segmentize(document.URL.toString()).slice(1);
+	});
+
+	afterNavigate(() => {
+		segments = segmentize(document.URL.toString()).slice(1);
+	});
 
 	function prettySegment(segment: string) {
 		return capitalize(segment.replaceAll('-', ' '));
