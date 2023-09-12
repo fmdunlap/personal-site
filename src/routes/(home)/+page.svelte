@@ -93,7 +93,7 @@
 		</div>
 	</div>
 	<div class="m-auto mt-6">
-		<Card background="bg-slate-100" wipeSizes extras="p-6 mb-24 bg-opacity-80">
+		<Card background="bg-slate-100" wipeSizes extras="p-6 pb-7 mb-24 bg-opacity-80">
 			<Socials />
 		</Card>
 	</div>
