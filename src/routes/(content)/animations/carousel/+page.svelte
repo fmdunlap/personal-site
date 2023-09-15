@@ -113,12 +113,12 @@
 					updateBouncer(bouncer, p5.deltaTime);
 
 					let nextBouncer = bouncers[(i + 1) % NUM_BOUNCERS];
-
-					drawBezier(
-						{ x: bouncer.pos.x, y: bouncer.pos.y },
-						{ x: nextBouncer.pos.x, y: nextBouncer.pos.y }
-					);
 					drawBouncer(bouncer);
+
+drawBezier(
+	{ x: bouncer.pos.x, y: bouncer.pos.y },
+	{ x: nextBouncer.pos.x, y: nextBouncer.pos.y }
+);
 				}
 			};
 		};
