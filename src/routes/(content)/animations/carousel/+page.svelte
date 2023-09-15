@@ -115,10 +115,10 @@
 					let nextBouncer = bouncers[(i + 1) % NUM_BOUNCERS];
 					drawBouncer(bouncer);
 
-drawBezier(
-	{ x: bouncer.pos.x, y: bouncer.pos.y },
-	{ x: nextBouncer.pos.x, y: nextBouncer.pos.y }
-);
+					drawBezier(
+						{ x: bouncer.pos.x, y: bouncer.pos.y },
+						{ x: nextBouncer.pos.x, y: nextBouncer.pos.y }
+					);
 				}
 			};
 		};
