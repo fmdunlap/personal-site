@@ -89,6 +89,10 @@
 					on my <a class="text-emerald-400 underline hover:text-emerald-500" href="/essays">blog</a
 					>. Let's journey through the digital landscape together.
 				</p>
+				<a class="text-emerald-400 underline hover:text-emerald-500" href="/essays"> My Blog </a>
+				<a class="text-emerald-400 underline hover:text-emerald-500" href="/animations">
+					Some Cool Animations
+				</a>
 			</div>
 		</div>
 	</div>
