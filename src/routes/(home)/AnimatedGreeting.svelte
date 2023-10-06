@@ -23,7 +23,10 @@
 	const minKeystrokeTimeMs = 25;
 	function updateGreeting() {
 		// Set the next greeting
-		nextGreeting = greetingsList[Math.floor(Math.random() * greetingsList.length)];
+		let currentGreeting = nextGreeting;
+		while (currentGreeting === nextGreeting) {
+			nextGreeting = greetingsList[Math.floor(Math.random() * greetingsList.length)];
+		}
 		// Backspace out the current greeting
 		let currentTimeout = 0;
 		greeting.split('').forEach((_, i) => {
