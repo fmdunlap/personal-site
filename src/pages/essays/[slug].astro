@@ -1,5 +1,5 @@
 ---
-import { getCollection, CollectionEntry } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import EssaysLayout from "../../layouts/EssaysLayout.astro";
 
 export const prerender = true;
@@ -29,8 +29,8 @@ const { Content } = await post.render();
 ---
 
 <EssaysLayout title={post.data.title}>
-    <div class="px-12 py-8 bg-white rounded-md">
-        <div class="prose prose-xl relative">
+    <div class="px-12 py-8 rounded-md bg-white">
+        <div class="mx-auto prose prose-xl relative">
             <h1>{post.data.title}</h1>
             <Content />
         </div>
