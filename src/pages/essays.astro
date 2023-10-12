@@ -12,7 +12,7 @@ const posts = await getCollection('posts');
                 return (
                     <li class="flex flex-row">
                         <div class="my-auto w-1 h-1 rounded-xl bg-black"/>
-                        <a href="/" class="px-2 text-lg underline text-emerald-700 hover:text-emerald-500">{post.data.title}</a>
+                        <a href={"/essays/" + post.slug} class="px-2 text-lg underline text-emerald-700 hover:text-emerald-500">{post.data.title}</a>
                     </li>
                 )
             })}

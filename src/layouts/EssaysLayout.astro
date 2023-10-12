@@ -11,6 +11,9 @@ const { title } = Astro.props;
 const breadcrumbs = [{
     name: "Home",
     href: "/"
+}, {
+    name: "Essays",
+    href: "/essays"
 }].concat(
     Astro.url.toString().substring(Astro.url.toString().indexOf("essays") + 7).split("/")
     .map((crumb, index, arr) => {
