@@ -1,6 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
-import EssaysLayout from "../../layouts/EssaysLayout.astro";
+import BreadcrumbLayout from "../../layouts/BreadcrumbLayout.astro";
 
 export const prerender = true;
 
@@ -28,11 +28,11 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<EssaysLayout title={post.data.title}>
+<BreadcrumbLayout title={post.data.title} firstBreadcrumb="essays">
     <div class="px-12 py-8 rounded-md bg-white">
         <div class="mx-auto prose prose-xl relative">
             <h1>{post.data.title}</h1>
             <Content />
         </div>
     </div>
-</EssaysLayout>
+</BreadcrumbLayout>

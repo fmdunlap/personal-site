@@ -3,19 +3,20 @@ import BaseLayout from "./BaseLayout.astro";
 import Header from "../components/Header.svelte";
 
 interface Props {
-    title: string
+    title: string,
+    firstBreadcrumb: string,
 }
 
-const { title } = Astro.props;
+const { title, firstBreadcrumb } = Astro.props;
 
 const breadcrumbs = [{
     name: "Home",
     href: "/"
 }, {
-    name: "Essays",
-    href: "/essays"
+    name: firstBreadcrumb.charAt(0).toUpperCase() + firstBreadcrumb.slice(1),
+    href: "/" + firstBreadcrumb
 }].concat(
-    Astro.url.toString().substring(Astro.url.toString().indexOf("essays") + 7).split("/")
+    Astro.url.toString().substring(Astro.url.toString().indexOf(firstBreadcrumb) + firstBreadcrumb.length + 1).split("/")
     .map((crumb, index, arr) => {
     return {
         name: crumb,
