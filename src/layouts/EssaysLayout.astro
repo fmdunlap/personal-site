@@ -1,0 +1,32 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Header from "../components/Header.svelte";
+
+interface Props {
+    title: string
+}
+
+const { title } = Astro.props;
+
+const breadcrumbs = [{
+    name: "Home",
+    href: "/"
+}].concat(
+    Astro.url.toString().substring(Astro.url.toString().indexOf("essays") + 7).split("/")
+    .map((crumb, index, arr) => {
+    return {
+        name: crumb,
+        href: arr.slice(0, index + 1).join("/")
+    }
+})).filter(crumb => crumb.name !== "");
+
+console.log(Astro.url.toString())
+console.log(breadcrumbs)
+---
+
+<BaseLayout title={title}>
+    <div class="min-h-screen px-16 pt-4 bg-zinc-200">
+        <Header breadcrumbs={breadcrumbs}/>
+        <slot />
+    </div>
+</BaseLayout>
