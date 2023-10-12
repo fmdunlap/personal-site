@@ -10,7 +10,7 @@ const { title } = Astro.props;
 
 <BaseLayout title={title}>
 	<BackgroundContainer client:load>
-		<div class="min-h-screen">
+		<div class="min-h-screen px-8 md:px-24">
 			<slot />
 		</div>
 	</BackgroundContainer>

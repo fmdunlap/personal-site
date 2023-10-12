@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, passthroughImageService } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 import svelte from "@astrojs/svelte";
 
@@ -12,5 +12,8 @@ export default defineConfig({
     webAnalytics: {
       enabled: true
     }
-  })
+  }),
+  image: {
+    service: passthroughImageService()
+  }
 });
