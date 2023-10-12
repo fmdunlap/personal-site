@@ -1,7 +1,22 @@
 ---
 import EssayLayout from '../layouts/EssaysLayout.astro'
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts');
 ---
 
 <EssayLayout title="Essays">
+    <div class="bg-white rounded-md shadow-lg px-4 py-2">
+        <ul>
+            {posts.map((post) => {
+                return (
+                    <li class="flex flex-row">
+                        <div class="my-auto w-1 h-1 rounded-xl bg-black"/>
+                        <a href="/" class="px-2 text-lg underline text-emerald-700 hover:text-emerald-500">{post.data.title}</a>
+                    </li>
+                )
+            })}
+        </ul>
+    </div>
 </EssayLayout>
 

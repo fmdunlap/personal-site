@@ -1,0 +1,26 @@
+---
+title: KYSS - Keep Your State Simple
+date: 2023-09-11
+---
+
+Let's face it - If you're like me and have battled the complexities of Redux or gotten lost in React's Context labyrinth, you know it's no walk in the park. But here's some good news: SvelteKit is like that cool friend who just makes things easy. And not just easy—elegant, too. In this article, we're going to explore why SvelteKit's approach to state management feels like a breath of fresh air, especially when compared to React's often convoluted systems.
+
+## Simplicity ⇒ Intuition ⇒ Velocity
+
+Here's the magic equation: when things are simple, you intuitively know what to do, and that means you build stuff fast. Crazy fast. That's SvelteKit in a nutshell. React is like that old, reliable car you've had for years. It gets you where you need to go, but oh boy, the maintenance! You find yourself tinkering under the hood more often than actually driving. In contrast, SvelteKit feels like hopping into a sleek, self-driving Tesla. You just set your destination and enjoy the ride.
+
+In Svelte, the joy begins with the beautifully simple syntax. There’s no JSX to wrestle with or "useState" and "useEffect" hooks to manage your component's lifecycle. You're working with something that feels like HTML, CSS, and JavaScript got together and had a lovely, well-behaved child. This simplicity naturally leads to intuition. You find yourself guessing the right way to do things, and surprisingly, you're often correct! You know that feeling when you're using a new app and you think, "I bet this button does X" — and it does? That's SvelteKit for you. Everything is where you expect it to be.
+
+So, let’s talk about everyone’s favorite subject - state management!
+
+When I was first learning Svelte, I was shocked at how simple it makes state management. In a React environment, the complexities of state management quickly escalate, often pushing developers toward cumbersome solutions like Redux or MobX. SvelteKit, however, brilliantly simplifies this process.
+
+Imagine a world where you don't have to call a function to change a variable and trigger a re-render. In Svelte, and by extension SvelteKit, all you have to do is update a variable—yes, a good old JavaScript variable—and the UI magically updates. It's as simple as prepending a variable with $: and letting Svelte do the rest2 
+
+.
+
+There's no need to "lift state up" or drill props down multiple component layers. Your code remains clean, readable, and intuitive. When a variable changes, your UI changes. Period. You spend less time tracking state changes and more time crafting the user experiences you actually care about. It's like having a helpful assistant who instinctively knows when to refresh your coffee—except this one updates your UI.
+
+Pictures (or I guess code snippets in this case) are worth a thousand words, so let’s take a look at one:
+
+## A Quick State Management Example

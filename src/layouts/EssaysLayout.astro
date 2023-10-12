@@ -27,6 +27,8 @@ console.log(breadcrumbs)
 <BaseLayout title={title}>
     <div class="min-h-screen px-16 pt-4 bg-zinc-200">
         <Header breadcrumbs={breadcrumbs}/>
-        <slot />
+        <div class="py-4">
+            <slot />
+        </div>
     </div>
 </BaseLayout>
