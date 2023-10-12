@@ -1,62 +1,54 @@
-# Hello
+# Astro Starter Kit: Basics
 
-This is a repository for my personal website. It serves as a platform for me to share blog posts and videos.
-
-## Features
-
-Blog Posts: I can post articles on a variety of topics using the blog functionality of the website.
-Videos: I can upload and share videos on the website to engage with my audience.
-Installation
-
-To set up the personal website on your local machine, follow these steps:
-
-Clone the repository:
-
-```bash
-git clone [repository-url]
+```sh
+npm create astro@latest -- --template basics
 ```
 
-Install the necessary dependencies:
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
 
-```bash
-npm install
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+
+![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── components/
+│   │   └── Card.astro
+│   ├── layouts/
+│   │   └── Layout.astro
+│   └── pages/
+│       └── index.astro
+└── package.json
 ```
 
-Start the development server:
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-```bash
-npm start
-```
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-## Usage
+Any static assets, like images, can be placed in the `public/` directory.
 
-To use the personal website, follow these steps:
+## 🧞 Commands
 
-Access the website through the browser by entering the URL.
+All commands are run from the root of the project, from a terminal:
 
-Explore the different sections of the website, including the blog posts and videos I have shared.
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-Contributing
+## 👀 Want to learn more?
 
-If you would like to contribute to the development of the personal website, please follow these steps:
-
-Fork the repository and create a new branch:
-git checkout -b feature/your-feature
-
-Make the necessary changes and commit them:
-git commit -m "Add your feature"
-
-Push the changes to your branch:
-git push origin feature/your-feature
-
-Submit a pull request, describing the changes you made and why they should be merged.
-
-## License
-
-This repository is licensed under the MIT License. Feel free to use and modify the code as per the terms of this license.
-
-## Contact
-
-If you have any questions, suggestions, or feedback regarding the personal website, please feel free to contact me via Github.
-
-Enjoy exploring my personal website!
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
