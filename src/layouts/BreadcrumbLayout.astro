@@ -9,17 +9,21 @@ interface Props {
 
 const { title, firstBreadcrumb } = Astro.props;
 
+function capitalize(str: string) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 const breadcrumbs = [{
     name: "Home",
     href: "/"
 }, {
-    name: firstBreadcrumb.charAt(0).toUpperCase() + firstBreadcrumb.slice(1),
+    name: capitalize(firstBreadcrumb),
     href: "/" + firstBreadcrumb
 }].concat(
     Astro.url.toString().substring(Astro.url.toString().indexOf(firstBreadcrumb) + firstBreadcrumb.length + 1).split("/")
     .map((crumb, index, arr) => {
     return {
-        name: crumb,
+        name: capitalize(crumb),
         href: arr.slice(0, index + 1).join("/")
     }
 })).filter(crumb => crumb.name !== "");
