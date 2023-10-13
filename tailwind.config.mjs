@@ -8,9 +8,9 @@ export default {
 				landing: ['Mulish', 'sans-serif']
 			},
 			backgroundImage: {
-				twitterLogo: "url('images/twitter.svg')",
-				youtubeLogo: "url('images/youtube.svg')",
-				instagramLogo: "url('images/instagram.svg')"
+				twitterLogo: "url('/images/twitter.svg')",
+				youtubeLogo: "url('/images/youtube.svg')",
+				instagramLogo: "url('/images/instagram.svg')"
 			}
 		},
 	},
