@@ -1,0 +1,17 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import BackgroundContainer from '../components/landing/BackgroundContainer.svelte';
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<BaseLayout title={title}>
+	<BackgroundContainer client:load>
+		<div class="min-h-screen px-8 md:px-24">
+			<slot />
+		</div>
+	</BackgroundContainer>
+</BaseLayout>
